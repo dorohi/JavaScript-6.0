@@ -1,6 +1,5 @@
-let money, time;
-money = prompt("Ваш бюджет на месяц?", "");
-time = prompt("Введите дату в формате YYYY-MM-DD", "");
+let money = prompt("Ваш бюджет на месяц?", "");
+let time = prompt("Введите дату в формате YYYY-MM-DD", "");
 let mandatoryExpensesFirst = prompt("Введите обязательную статью расходов в этом месяце", "");
 let mandatoryExpensesCostFirst = prompt("Во сколько обойдется?", "");
 let mandatoryExpensesFirstSecond = prompt("Введите обязательную статью расходов в этом месяце", "");
