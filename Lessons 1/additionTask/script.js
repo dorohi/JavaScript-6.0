@@ -5,14 +5,22 @@ window.addEventListener('DOMContentLoaded', function () {
 	let strNum = String(num);
 	//let strNum = num+""; или топорно
 
-	/* Доступ до символов как до елементов масива */
-	let result = strNum[0] * strNum[1] * strNum[2] * strNum[3] * strNum[4];
+	let result = 1;
+	for (let i = 0; i < strNum.length; i++) {
+		console.log("strNum[" + i + "] = " + strNum[i]);
+		result *= strNum[i];
+		console.log("result " + (i+1) + " step = " + result);
+	}
 	// Или с помощью метода charAt
 	//let result = strNum.charAt(0)*strNum.charAt(1)*strNum.charAt(2)*strNum.charAt(3)*strNum.charAt(4);
-	console.log(result);
+	console.log("Total result  = " + result);
 
-	let power = result * result * result;
+	let power = 1;
+	for (let j = 1; j <= 3; j++) {
+		power *= result;
+		console.log("power " + j + " step = " + power);
+	}
+
 	let strPower = String(power);
-	//document.querySelector('#firstSecond').textContent = strPower.charAt(0)*strPower.charAt(1);
-	document.querySelector('#firstSecond').textContent = strPower[0] + strPower[1];
+	document.querySelector('#firstSecond').textContent = strPower.slice(0,2);
 });		
