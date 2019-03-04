@@ -51,7 +51,7 @@ function formatString(text){
 			console.log(" Новая строка: "+newText);
 		}
 	} else {
-		alert("Функция должна принимать!")
+		alert("Функция должна принимать строку!")
 		console.log("Не строка");
 	}
 }
