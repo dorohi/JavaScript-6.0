@@ -1,62 +1,59 @@
-/*
-	1) Создать массив week и записать в него дни недели в виде строк
-   	Вывести на экран все дни недели
-   	Каждый из них с новой строчки
-   	Выходные дни - жирным шрифтом
-   	Текущий день - курсивом (пока можно задать текущий день вручную, без работы с объектом даты)
-*/
+let str = "урок-3-был слишком легким";
+console.log("Начальная строка: " + str);
 
-let week = ['Понедельник', 'Вторник', 'Среда', 'Черверг', 'Пятница', 'Суббота', 'Воскресение'];
-//let week = new Arrey ('Понедельник', 'Вторник', 'Среда', 'Черверг', 'Пятница', 'Суббота', 'Воскресение');
-const weekOne = document.querySelector("#weekOne");
-const curentDay = "Суббота";	
+//Сделать так, чтобы строка начиналась с большой буквы
+let upperCaseStr = str[0].toUpperCase() + str.slice(1);
+console.log("Результат большой буквы: " + upperCaseStr);
 
-/* Вывод всего массива */
-document.querySelector("#weekList").textContent = week;
-console.log(week);
+//Теперь замените все “-” на пробелы
+let index = -1;
+while ((index = upperCaseStr.indexOf("-", index + 1)) != -1) {
+	upperCaseStr = upperCaseStr.slice(0,index) + " " + upperCaseStr.slice(index+1);
+	console.log("Индекс по которому найден \"-\" : " + index );
+	console.log("Результат: " + upperCaseStr);
+}
 
-/* Вывод построчно, с применением условий */
-/* Условия выполнял с помощью  добавления классов, можно было просто брать в теги, не стал реализовывать*/
-for (let i = 0; i < week.length; i++) {
-	if (i<5) {
-		var div = document.createElement('div');
-		div.className = "simple";
-		if (curentDay === week[i]) div.classList.add("italic");
-		div.innerHTML = week[i];
-		weekOne.appendChild(div);
-		console.log((i+1) + "-й день недели: " + week[i]);	
+//Из получившейся строки вырезать слово “легким”, в этом же слове заменить 2 последние буквы на букву “о”
+let findWord = upperCaseStr.indexOf("легким");
+console.log("Индекс найденого слова: " + findWord);
+let word = upperCaseStr.slice(findWord);
+console.log("Вырезаное слово: " + word);
+let newWord = word.slice(0,word.length-2) + "oo";
+console.log("Вырезаное слово: " + newWord);
+
+// У вас также есть массив arr = [20, 33, 1, “Человек”, 2, 3]
+// Вывести в консоль квадратный корень из суммы кубов его элементов (Да, человека нужно исключить)
+let arr = [20, 33, 1, 'Человек', 2, 3];
+let sum=0;
+for (let i = 0; i < arr.length; i++) {
+	if (!isNaN(arr[i])){
+		console.log("Элемент: " + arr[i]);
+		sum+=Math.pow(+arr[i],3);
+		console.log("Сумма кубов: " + sum);
+	}
+}
+console.log("Квадратный корень суммы кубов массива = " + Math.sqrt(sum));
+
+//Создайте функцию, которая принимает 1 аргумент (название произвольное)
+//Если как аргумент передана не строка - функция оповещает об этом пользователя
+//В полученной (как аргумент) строке функция должна убрать все пробелы в начале и в конце
+//Если строка более 50 знаков - то после 50го символа часть текста скрывается и вместо них появляются три точки (...)
+
+function formatString(text){
+	if ((typeof(text)) === 'string') {
+		console.log("Строка");
+		console.log(text + " | Длина строки: "+text.length);
+		text = text.trim();
+		console.log(text + " | Длина строки: "+text.length);
+		if (text.length>50) {
+			console.log(" Строка слишком длинная: "+text.length);
+			let newText = text.slice(0,50) + "...";
+			console.log(" Новая строка: "+newText);
+		}
 	} else {
-		var div = document.createElement('div');
-		div.className = "strong";
-		if (curentDay === week[i]) div.classList.add("italic");
-		div.innerHTML = week[i];
-		weekOne.appendChild(div);
-		console.log((i+1) + "-й день недели: " + week[i]);	
+		alert("Функция должна принимать!")
+		console.log("Не строка");
 	}
 }
 
-console.log('-----------------------------------');	
-/*
-	2) Создать массив arr = []
-      Записать в него 7 любых многозначных чисел в виде строк
-      Вывести в консоль только те, что начинаются с цифры 3 или 7 (Должны присутствовать в массиве)
-*/
-
-let arr = ['35498425', '5468745', '984987654', '79845654', '654687', '4987643', '79849545'];
-//let arr = new Arrey ('35498425', '5468745', '984987654', '79845654', '654687', '4987643', '79849545');
-
-/* 
-	Буду выводить для наглядности все числа, только для нужных поставлю:
-	"указатель =>" - если число начинается на 3 или 7
-	"указатель <=" - если число заканчивается на 3 или 7
- */
-for (let j = 0; j < arr.length; j++) {
-	//console.log("Последняя цифра " + arr[j][arr[j].length-1]);
-	if (arr[j][0] == '3' || arr[j][0] == '7') {
-		console.log(" => " + (j+1) + "-е число: " + arr[j]);
-	} else if (arr[j][arr[j].length-1] == '3' || arr[j][arr[j].length-1] == '7'){
-		console.log(" <= " + (j+1) + "-е число: " + arr[j]);
-	} else {
-		console.log((j+1) + "-е число: " + arr[j]);
-	}
-}
+formatString('   555  adasdjas 8a9sd7 a98s7d 9a87sd98 a7s9d7 a9s7d98 7a9sd7 9a87sd97a9sd7a987sd 98a7s9d 7as98d79as87d 987   ');
