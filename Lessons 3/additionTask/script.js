@@ -14,9 +14,10 @@ while ((index = upperCaseStr.indexOf("-", index + 1)) != -1) {
 }
 
 //Из получившейся строки вырезать слово “легким”, в этом же слове заменить 2 последние буквы на букву “о”
-let findWord = upperCaseStr.indexOf("легким");
+let target = "легким";
+let findWord = upperCaseStr.indexOf(target);
 console.log("Индекс найденого слова: " + findWord);
-let word = upperCaseStr.slice(findWord);
+let word = upperCaseStr.slice(findWord, findWord+target.length);
 console.log("Вырезаное слово: " + word);
 let newWord = word.slice(0,word.length-2) + "oo";
 console.log("Вырезаное слово: " + newWord);
