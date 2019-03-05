@@ -75,12 +75,37 @@ let appData = {
 		items = items.trim();
 		appData.income = items.split(',');
 		for (let item in appData.income) {
-			appData.income[item] = appData.income[item].trim();
+			if (verifyString(appData.income[item])){
+				appData.income[item] = appData.income[item].trim();
+				console.log("Добавили: " + appData.income[item]);
+			}
 		}
-		appData.income.push(prompt("Может чтото еще?",""));
+		let lastQuestion = prompt("Может чтото еще?","");
+		if (verifyString(lastQuestion)){
+			console.log("Добавили последний: " + lastQuestion);
+			appData.income.push(lastQuestion);
+		}
 		appData.income.sort();
+		console.log("Способы доп. заработка: ");
+		appData.income.forEach(function (item, index){
+			console.log((index+1) + ") " + item);
+		});
 	}
 };
+
+console.log("Наша программа включает в себя данные: ");
+for (let props in appData){
+	console.log("appData." + props + " = " + appData[props]);
+}
+
+function verifyString(string){
+	if ((typeof (string)) === 'string' && string != '' && (typeof (string)) != null ){
+		return string;
+	} else {
+		return false;
+	}
+}
+
 
 console.log(appData);
 
