@@ -99,7 +99,7 @@ for (let props in appData){
 }
 
 function verifyString(string){
-	if ((typeof (string)) === 'string' && string != '' && (typeof (string)) != null ){
+	if ((typeof (string)) === 'string' && string != '' && (typeof (string)) != null && isNaN(string) ){
 		return string;
 	} else {
 		return false;
