@@ -43,7 +43,7 @@ function chooseOptExpenses(){
 	for (let i = 0; i < 3; i++) {
 		let Question = prompt("Статья необязательных расходов?", "");
 		console.log("Добавляем статью необязательных расходов!");
-		appData.optionalExpenses[i] = Question;
+		appData.optionalExpenses[i+1] = Question;
 	}
 }
 chooseOptExpenses();
