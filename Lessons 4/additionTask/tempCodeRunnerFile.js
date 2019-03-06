@@ -1,15 +1,18 @@
-console.log(getFriendlyNumbers(1, 1300));
+console.log(getFriendlyNumbers( 2, 1300));
 
 function getFriendlyNumbers(start, end){
 	let friendly = [];
 	if (isNaN(start) || isNaN(end)){
-		return console.log("ERROR: Введите числовые параметры!");
+		console.log("ERROR: Введите числовые параметры!");
+		return false;
 	}
 	if (!isInteger(start) || !isInteger(end)) {
-		return console.log("ERROR: Введите числовые параметры!");
+		console.log("ERROR: Введите целочисловые параметры!");
+		return false;
 	}
 	if (start>end) {
-		return console.log("ERROR: Диапазон не может быть отрицательным!");
+		console.log("ERROR: Диапазон не может быть отрицательным!");
+		return false;
 	}
 	for (let i = start; i <= end; i++) {
 		//console.log("Берем число: " + i);
@@ -22,7 +25,7 @@ function getFriendlyNumbers(start, end){
 			}
 		}
 	}
-	return friendly.length ? friendly : false;
+	return  friendly;
 }
 
 function spreadNumber(num){
