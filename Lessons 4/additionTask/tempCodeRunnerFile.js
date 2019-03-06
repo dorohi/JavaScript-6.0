@@ -1,7 +1,11 @@
-console.log(getFriendlyNumbers( 2, 1300));
+console.log(getFriendlyNumbers(-1, 300));
 
-function getFriendlyNumbers(start, end){
+function getFriendlyNumbers(start, end) {
 	let friendly = [];
+	if (start<0 || end<0) {
+		console.log("ERROR: Введите числовые параметры!");
+		return false;
+	}
 	if (isNaN(start) || isNaN(end)){
 		console.log("ERROR: Введите числовые параметры!");
 		return false;
