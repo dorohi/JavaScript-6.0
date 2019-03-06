@@ -1,4 +1,4 @@
-console.log(getFriendlyNumbers(1, 500));
+console.log(getFriendlyNumbers(1, 1300));
 
 function getFriendlyNumbers(start, end){
 	let friendly = [];
@@ -12,21 +12,17 @@ function getFriendlyNumbers(start, end){
 		return console.log("ERROR: Диапазон не может быть отрицательным!");
 	}
 	for (let i = start; i <= end; i++) {
-		console.log("Берем число: " + i);
+		//console.log("Берем число: " + i);
 		for (let j = i; j <= end; j++) {
 			//console.log("Test i=" + i + "; j=" + j);
 			if (getSumDividers(i) == j && getSumDividers(j) == i && i!=j) {
 				let pare = [i,j];
 				friendly.push(pare);
-				console.log(friendly);
+				//console.log(friendly);
 			}
 		}
 	}
-	if (friendly.length) {
-		return friendly;
-	} else {
-		return false;
-	}
+	return friendly.length ? friendly : false;
 }
 
 function spreadNumber(num){
