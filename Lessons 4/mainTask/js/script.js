@@ -86,8 +86,18 @@ let appData = {
 			appData.income.push(lastQuestion);
 		}
 		appData.income.sort();
+
+		const content = document.querySelector('#content');
+		let div = document.createElement('div');
+		div.className = "simple";
+		div.innerHTML = "Способы доп. заработка: ";
+		content.appendChild(div);
 		console.log("Способы доп. заработка: ");
 		appData.income.forEach(function (item, index){
+			let p = document.createElement('p');
+			p.className = "italic";
+			p.innerHTML = (index + 1) + ") " + item;
+			content.appendChild(p);
 			console.log((index+1) + ") " + item);
 		});
 	}
