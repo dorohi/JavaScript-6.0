@@ -3,7 +3,6 @@ let money, time;
 function start (){
 	money = +prompt("Ваш бюджет на месяц?", "");
 	time = prompt("Введите дату в формате YYYY-MM-DD", "");
-
 	while (isNaN(money) || money == "" || money == null){
 		money = +prompt("Ваш бюджет на месяц?", "");
 	}
@@ -67,23 +66,27 @@ let appData = {
 		}
 	},
 	chooseIncome: function(){
-		let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)","");
-		if (!isNaN(items) || items == '' || items == null) {
+		let items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", "");
+		while (!isNaN(items) || items == "" || items == null) {
 			console.log("Некорректно введены данные \"Дополнительный доход\"!");
-			return false;
+			items = prompt("Что принесет дополнительный доход? (Перечислите через запятую)", "");
 		}
 		items = items.trim();
-		appData.income = items.split(',');
-		for (let item in appData.income) {
-			if (verifyString(appData.income[item])){
-				appData.income[item] = appData.income[item].trim();
-				console.log("Добавили: " + appData.income[item]);
+		let arrIncome = items.split(',');
+		for (let item of arrIncome) {
+			if (verifyString(item)) {
+				appData.income.push(item.trim());
+				console.log("Добавили: " + item);
+			} else {
+				console.log("НЕ добавили: " + item);
 			}
 		}
 		let lastQuestion = prompt("Может чтото еще?","");
 		if (verifyString(lastQuestion)){
 			console.log("Добавили последний: " + lastQuestion);
 			appData.income.push(lastQuestion);
+		} else {
+			console.log("НЕ добавили последний: " + lastQuestion);
 		}
 		appData.income.sort();
 
@@ -109,7 +112,7 @@ for (let props in appData){
 }
 
 function verifyString(string){
-	if ((typeof (string)) === 'string' && string != '' && (typeof (string)) != null && isNaN(string) ){
+	if ((typeof (string)) === 'string' && string != '' && (typeof (string)) != null && isNaN(string)) {
 		return string;
 	} else {
 		return false;
