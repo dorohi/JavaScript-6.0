@@ -1,7 +1,3 @@
-//Получить кнопку "Начать расчет" через id
-//Получить все блоки в правой части программы через классы (которые имеют класс название-value, 
-//начиная с <div class="budget-value"></div> и заканчивая <div class="yearsavings-value"></div>)
-//Получить поля(input) c обязательными расходами через класс. (class=”expenses-item”)
 const start = document.querySelector('#start'),
 		budgetValue = document.querySelector('.budget-value'),
 		daybudgetValue = document.querySelector('.daybudget-value'),

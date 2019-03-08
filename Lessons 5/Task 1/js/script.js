@@ -1,7 +1,10 @@
 //Восстановить порядок в меню, добавить пятый пункт
 
 const menu = document.querySelector(".menu"),
+		menuItems = document.querySelectorAll(".menu-item"),
 		li = document.createElement('li');
+console.log(menuItems);
+menu.insertBefore(menuItems[2], menuItems[1]);
 li.classList.add('menu-item');
 li.textContent = 'Пьятый пункт';
 menu.appendChild(li);
