@@ -1,17 +1,4 @@
-const arr = [15, 1, 2, 3, 0, 12, 4];
-let answerArr = [];
+let numbers = [1, 2, 4, 5, 6, 7, 8],
+	someNumbers = [1, 2, 'Hello', 4, 5, 'world', 6, 7, 8],
+	noNumbers = ['здесь', 'нет', 'чисел'];
 
-function findLeesRigt(arr){
-	for (let i = 0; i < arr.length; i++) {
-		let countLees = 0;
-		for (let j = i + 1; j < arr.length; j++) {
-			//console.log('i='+i+'j='+j);
-			if (arr[i] > arr[j]) {
-				countLees++;
-			}
-		}	
-		answerArr.push(countLees);
-	}
-	console.log(answerArr);
-}
-findLeesRigt(arr);
