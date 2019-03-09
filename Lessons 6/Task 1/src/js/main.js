@@ -69,11 +69,15 @@ buttonExpenses.addEventListener('click', () =>{
 });
 
 buttonOptionalexpenses.addEventListener('click', () => {
+	if (optionalExpensesValue.textContent){
+		optionalExpensesValue.textContent = ''; 
+	}
 	for (let i = 0; i < optionalexpensesItem.length; i++) {
 		let Question = optionalexpensesItem[i].value;
 		appData.optionalExpenses[i] = Question;
 		optionalExpensesValue.textContent += appData.optionalExpenses[i] + ' '; 
 	}
+	console.log(appData.optionalExpenses);
 });
 
 buttonCountBudget.addEventListener('click', () => {
@@ -135,6 +139,11 @@ choosePercent.addEventListener('input', () =>{
 let countExpenses = {};
 expensesItems.forEach((item, index) => {
 	item.addEventListener('input', () => {
+		let regexp;
+		(index % 2 == 1) ? regexp = /[^0-9]/g : regexp = /[^а-яА-ЯёЁ]/g;
+		if(item.value.match(regexp)){
+			item.value = item.value.replace(regexp, '');
+		}
 		if (item.value) {
 			countExpenses[index] = item.value;
 		}
@@ -148,6 +157,10 @@ expensesItems.forEach((item, index) => {
 let countOptionalexpenses = {};
 optionalexpensesItem.forEach((item, index) => {
 	item.addEventListener('input', () => {
+		let regexp = /[^а-яА-ЯёЁ]/g;
+		if(item.value.match(regexp)){
+			item.value = item.value.replace(regexp, '');
+		}
 		if (item.value) {
 			countOptionalexpenses[index] = item.value;
 		}
