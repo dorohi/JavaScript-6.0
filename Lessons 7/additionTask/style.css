@@ -1,0 +1,10 @@
+#field {
+	height: 400px;
+	border-bottom: 20px green groove;
+	position: relative;
+}
+
+#fly {
+	position: absolute;
+	cursor: pointer;
+}
