@@ -1,26 +1,21 @@
-let phones = document.querySelectorAll('.popup__call-phone'),
-	hide = document.querySelector('.popup__call-phone-hidden'),
-	divPhon = document.querySelector('.popup__call-phoneblock'),
-	first, second;
+let wrap = document.querySelector('.popup__call-wrap');
 
-phones.forEach((element) => {
-	let wrap = document.querySelector('.popup__call-wrap');
-	wrap.addEventListener('click', function () {
-		if (!element.classList.contains('popup__call-phone-hidden')){
-			first = element;
-		}
-		let arrow = wrap.querySelector('.popup__call-svg');
-		arrow.style.transform = 'rotate(180deg)';
+wrap.addEventListener('click', function () {
+	console.log('Open');
+	let arrow = wrap.querySelector('.popup__call-svg'),
+		phones = document.querySelectorAll('.popup__call-phone'),
+		divPhon = document.querySelector('.popup__call-phoneblock');
+	arrow.style.transform = 'rotate(180deg)';
+	phones.forEach((element) => {
 		element.style.visibility = 'visible';
+		if (element.classList.contains('popup__call-phone-hidden')) {
+			element.addEventListener('click', () => {
+				console.log('Select');
+				divPhon.insertBefore(element, this.parentNode);
+				this.parentNode.style.visibility = 'hidden';
+				this.parentNode.classList.add('popup__call-phone-hidden');
+				element.classList.remove('popup__call-phone-hidden');
+			});
+		}
 	});
-});
-
-hide.addEventListener('click', () => {
-	second = hide;
-	console.log(first);
-	console.log(second);
-	divPhon.insertBefore(second, first);
-	second.classList.remove('popup__call-phone-hidden');
-	first.classList.add('popup__call-phone-hidden');
-	first.style.visibility = 'hidden';
 });
