@@ -55,6 +55,13 @@
             "price": 25000,
             "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2018_Dacia_Duster.jpg/2880px-2018_Dacia_Duster.jpg",
             "category": "france"
+        },
+        {
+            "name": "Запорожец",
+            "description": "Ето прсто здс",
+            "price": 1000000,
+            "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Saporoshez_ZAZ_965_A.JPG/1280px-Saporoshez_ZAZ_965_A.JPG",
+            "category": "ukraine"
         }
     ]
 }

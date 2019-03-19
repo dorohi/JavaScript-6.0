@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const content = document.querySelector('.filters'),
         carsItems = document.querySelector('.cars__items');
 
-    let request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.open('GET', 'js/cars.json');
     request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     request.addEventListener('readystatechange', function () {
@@ -32,15 +32,9 @@ window.addEventListener('DOMContentLoaded', () => {
                     btn.textContent = country;
                     content.appendChild(btn);
                     btn.addEventListener('click', function () {
-                        let attr = this.getAttribute('id');
-                        const items = document.querySelectorAll('.car__item');
-                        items.forEach(element =>{
-                            if (element.getAttribute('category') == attr) {
-                                element.style.display = 'block';
-                            } else {
-                                element.style.display = 'none';
-                            }
-                        });
+                        const attr = this.getAttribute('id'),
+                            items = document.querySelectorAll('.car__item');
+                        items.forEach(element => element.getAttribute('category') == attr ? element.style.display = 'block' : element.style.display = 'none');
                     });
                 });
                 const btn = document.createElement('button');
@@ -57,5 +51,4 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
     request.send();
-    console.log(request);
 });
