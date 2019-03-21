@@ -7,22 +7,39 @@ $(document).ready(function () {
 		$(".overlay").animate({
 			opacity: 1
 		}, 'slow');
-		$('.modal').css({'display': 'block','top': '-600px'});
+		$('.modal').css({ 'display': 'block', 'top': '-600px', 'left': '-1000px'});
 		$(".modal").animate({
-			top: '0px'
-		}, 'slow');
+			top: '0px',
+			left: '0px'
+		}, 1000);
 	}
 	function hideOverlay() {
 		$(".overlay").animate({
 			opacity: 0
-		}, 'slow', function (){
+		}, 'slow', 
+		function (){
 			$(".overlay").css('display', 'none');
 		});
-		
+
 		$(".modal").animate({
-			top: '-600px'
-		}, 'slow', function(){
+			top: '1600px',
+			left: '1600px'
+		}, 1500,
+		function () {
 			$(".modal").css('display', 'none');
 		});
 	}
+	$('.form-inline').on('submit', function (event) {
+		event.preventDefault();
+		$.post(
+			"/server.php", 
+			$('.form-inline').serialize(),
+			onAjaxSuccess
+		);
+
+		function onAjaxSuccess(data) {
+			hideOverlay();
+			console.log(data);
+		}
+	});
 });
